@@ -115,7 +115,7 @@ get_artifacts() {
             ;;
         mac)
             openslide_artifacts="libopenslide.dylib libopenslide.1.dylib openslide-quickhash1sum openslide-show-properties openslide-write-png"
-            openslide_java_artifacts="libopenslide-jni.dylib openslide.jar"
+            openslide_java_artifacts="libopenslide-jni.jnilib openslide.jar"
             ;;
     esac
 }
@@ -256,7 +256,6 @@ build() {
     meson install -C "$build" --only-changed --no-rebuild --destdir "${root}"
     # Move OpenSlide Java artifacts to the right place
     pushd "${root}/lib/openslide-java" >/dev/null
-    ls -lah
     cp ${openslide_java_artifacts} "${root}/bin/"
     popd >/dev/null
 }
