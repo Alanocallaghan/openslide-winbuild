@@ -256,6 +256,7 @@ build() {
     meson install -C "$build" --only-changed --no-rebuild --destdir "${root}"
     # Move OpenSlide Java artifacts to the right place
     pushd "${root}/lib/openslide-java" >/dev/null
+    ls -lah
     cp ${openslide_java_artifacts} "${root}/bin/"
     popd >/dev/null
 }
